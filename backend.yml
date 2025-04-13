@@ -13,7 +13,7 @@ Resources:
   DynamoDBLockTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: infrastructure-gststate-lock
+      TableName: infrastructure-state-lock
       AttributeDefinitions:
         - AttributeName: LockID
           AttributeType: S
@@ -51,7 +51,7 @@ Resources:
                   - dynamodb:GetItem
                   - dynamodb:DeleteItem
                 Resource:
-                  - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/TerraformStateLock"
+                  - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/infrastructure-state-lock"
 
   InfrastructureOperatorRole:
     Type: AWS::IAM::Role
