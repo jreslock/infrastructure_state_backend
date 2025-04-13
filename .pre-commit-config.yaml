@@ -1,0 +1,22 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+        exclude: backend.yml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/aws-cloudformation/cfn-lint
+    rev: v0.81.0
+    hooks:
+      - id: cfn-lint
+        files: backend.yml
+
+  - repo: local
+    hooks:
+      - id: validate-cloudformation
+        name: Validate CloudFormation Template
+        entry: bash -c 'aws cloudformation validate-template --template-body "$(cat backend.yml)"'
+        language: system
+        files: backend.yml
