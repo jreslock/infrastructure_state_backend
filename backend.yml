@@ -33,6 +33,13 @@ Resources:
             Principal:
               AWS: !Sub "arn:aws:iam::${AWS::AccountId}:role/ops-admin"
             Action: sts:AssumeRole
+          - Effect: Allow
+            Principal:
+              AWS: "324880187172"
+            Action: sts:AssumeRole
+            Condition:
+              StringLike:
+                sts:ExternalId: "jreslock@*"
       Policies:
         - PolicyName: StateManagementPolicy
           PolicyDocument:
@@ -64,5 +71,12 @@ Resources:
             Principal:
               AWS: !Sub "arn:aws:iam::${AWS::AccountId}:role/ops-admin"
             Action: sts:AssumeRole
+          - Effect: Allow
+            Principal:
+              AWS: "324880187172"
+            Action: sts:AssumeRole
+            Condition:
+              StringLike:
+                sts:ExternalId: "jreslock@*"
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/AdministratorAccess
