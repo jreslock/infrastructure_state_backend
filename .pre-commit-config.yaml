@@ -17,6 +17,6 @@ repos:
     hooks:
       - id: validate-cloudformation
         name: Validate CloudFormation Template
-        entry: bash -c 'aws cloudformation validate-template --template-body "$(cat backend.yml)"'
+        entry: bash -c 'aws cloudformation --region us-east-1 validate-template --template-body "$(cat backend.yml)"'
         language: system
         files: backend.yml

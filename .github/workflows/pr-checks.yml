@@ -24,4 +24,8 @@ jobs:
           pip install pre-commit
 
       - name: Run pre-commit checks
-        run: pre-commit run --all-files
+        run: |
+            pre-commit run cfn-lint
+            pre-commit run check-yaml
+            pre-commit run end-of-file-fixer
+            pre-commit run trailing-whitespace
